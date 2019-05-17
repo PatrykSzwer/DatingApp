@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace DatingApp.Model.Repository
 {
+    // TODO: Try to add UnitOfWork and implement pure generic repository again.
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly DataContext _context;
