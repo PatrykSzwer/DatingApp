@@ -1,7 +1,6 @@
-﻿using DatingApp.Model.Data;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using DatingApp.Model.Repository.IRepository;
 
 namespace DatingApp.API.Controllers
 {
@@ -10,18 +9,18 @@ namespace DatingApp.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly IValueRepository _valueRepository;
 
-        public ValuesController(DataContext context)
+        public ValuesController(IValueRepository valueRepository)
         {
-            this._context = context;
+            this._valueRepository = valueRepository;
         }
 
         // GET api/values
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
-            var values = await _context.Values.ToListAsync();
+            var values = await _valueRepository.GetAll();
             return Ok(values);
         }
 
@@ -29,7 +28,7 @@ namespace DatingApp.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetValue(int id)
         {
-            var value = await _context.Values.FirstOrDefaultAsync(x => x.Id == id);
+            var value = await _valueRepository.Get(id);
 
             return Ok(value);
         }
