@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DatingApp.Model.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using DatingApp.Model.Repository.IRepository;
 
 namespace DatingApp.API.Controllers
 {
-    // localhost:5000/api/Values
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase

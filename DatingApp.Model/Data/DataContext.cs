@@ -11,5 +11,6 @@ namespace DatingApp.Model.Data
 
         // Represents data tables that will be created in the database.
         public DbSet<Value> Values { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

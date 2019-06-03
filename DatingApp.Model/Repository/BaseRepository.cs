@@ -64,9 +64,9 @@ namespace DatingApp.Model.Repository
             throw new NotImplementedException();
         }
 
-        public Task SaveChanges()
+        public async Task SaveChanges()
         {
-            throw new NotImplementedException();
+            await this._context.SaveChangesAsync();
         }
     }
 }
